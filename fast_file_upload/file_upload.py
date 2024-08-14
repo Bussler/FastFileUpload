@@ -1,5 +1,7 @@
 import requests
 
+from fast_file_upload import logger
+
 BASE_URL = "http://localhost:8001"
 
 
@@ -16,7 +18,7 @@ def upsert_version_zip_file(path_to_zip: str) -> None:
             )
         ]
         create_response = requests.post(f"{BASE_URL}/", files=files)
-        print(f"Success: {create_response.text}")
+        logger.info(f"Success: {create_response.text}")
 
 
 def main() -> None:
