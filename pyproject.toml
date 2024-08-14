@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "fast_file_upload"
+version = "0.1.0"
+description = ""
+authors = ["Bussler <maarten.bussler@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.112.0"
+uvicorn = "^0.30.6"
+python-multipart = "^0.0.9"
+requests = "^2.32.3"
+toml = "^0.10.2"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.5.7"
+mypy = "^1.11.1"
+isort = "^5.13.2"
+
+[tool.poetry.scripts]
+app = "fast_file_upload.app:main"
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+ignore = [
+    "E701"
+]
+
+[tool.ruff.format]
+indent-style = "space"
+
+[tool.isort]
+multi_line_output = 3
+
+[tool.mypy]
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+
+# Untyped Definitions and Calls
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+
+exclude = [ ".venv", ".vscode", ]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
