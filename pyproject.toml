@@ -18,9 +18,11 @@ toml = "^0.10.2"
 ruff = "^0.5.7"
 mypy = "^1.11.1"
 isort = "^5.13.2"
+types-requests = "^2.32.0.20240712"
 
 [tool.poetry.scripts]
 app = "fast_file_upload.app:main"
+upload = "fast_file_upload.file_upload:main"
 
 [tool.ruff]
 line-length = 100
