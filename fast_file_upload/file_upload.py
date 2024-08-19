@@ -50,8 +50,7 @@ def upload_zip_file_big(path_to_zip: str) -> None:
 
 def main() -> None:
     upload_zip_file_small("data/test.zip")
-    # upload_zip_file_big("data/old.zip")
-    # upload_zip_multipart_encoder("test.zip")
+    upload_zip_file_big("data/old.zip")
 
 
 if __name__ == "__main__":

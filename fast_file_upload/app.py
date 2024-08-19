@@ -17,7 +17,7 @@ async def say_hello() -> str:
 @app.post("/small_file_upload/")
 async def small_file_upload(
     file: UploadFile,
-) -> str:
+) -> int:
     """Read file in as Upload file and save it to a file async.
 
     Pro: Get good swagger documentation with UploadFile.
@@ -27,11 +27,11 @@ async def small_file_upload(
     file_contents = await file.read()
     async with aiofiles.open(f"{file.filename}", "wb") as out_file:
         await out_file.write(file_contents)
-    return "Success! File uploaded."
+    return status.HTTP_200_OK
 
 
 @app.post("/large_file_upload/")
-async def large_file_upload(request: Request) -> str:
+async def large_file_upload(request: Request) -> int:
     """Read filedata as a stream from requests and save it to a file.
     Pro: Stream data directly to file, so no memory overhead.
     Con: Bad documentation and error handling, since data has to be parsed from request body.
@@ -55,9 +55,7 @@ async def large_file_upload(request: Request) -> str:
             parser.data_received(chunk)
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
-
-    print(file_.multipart_filename)
-    return "Success! File uploaded."
+    return status.HTTP_200_OK
 
 
 def main() -> None:
