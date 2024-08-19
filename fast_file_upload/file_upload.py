@@ -1,5 +1,4 @@
 import requests
-from requests_toolbelt import MultipartEncoder
 
 from fast_file_upload import logger
 
@@ -20,7 +19,7 @@ def upload_zip_file_small(path_to_zip: str) -> None:
                 (
                     "file",
                     (
-                        "file.zip",
+                        "test_small.zip",
                         f,
                         "application/x-zip-compressed",
                     ),
@@ -42,15 +41,15 @@ def upload_zip_file_big(path_to_zip: str) -> None:
         create_response = requests.post(
             f"{BASE_URL}/large_file_upload/",
             files={"file": f},
-            headers={"Filename": "bigFile.zip"},
+            headers={"Filename": "test_big.zip"},
         )
 
         logger.info(f"Success: {create_response.text}")
 
 
 def main() -> None:
-    upload_zip_file_small("data/test.zip")
-    upload_zip_file_big("data/old.zip")
+    upload_zip_file_small("data/test_small.zip")
+    # upload_zip_file_big("data/test_big.zip")
 
 
 if __name__ == "__main__":
