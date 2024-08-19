@@ -1,6 +1,6 @@
 # FastFileUpload
 
-FastAPI example with fast large file upload.
+FastAPI template example for fast small and large file upload.
 
 ## Installation
 
